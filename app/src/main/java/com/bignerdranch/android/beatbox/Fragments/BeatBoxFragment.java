@@ -1,6 +1,8 @@
 package com.bignerdranch.android.beatbox.Fragments;
 
 import android.databinding.DataBindingUtil;
+import android.databinding.InverseBindingMethod;
+import android.databinding.InverseBindingMethods;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,8 +11,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SeekBar;
 
 import com.bignerdranch.android.beatbox.Models.BeatBox;
+import com.bignerdranch.android.beatbox.Models.BeatBoxViewModel;
 import com.bignerdranch.android.beatbox.Models.Sound;
 import com.bignerdranch.android.beatbox.Models.SoundViewModel;
 import com.bignerdranch.android.beatbox.R;
@@ -22,6 +26,7 @@ import java.util.List;
 /**
  * Created by mateusz on 23.04.18.
  */
+
 
 public class BeatBoxFragment extends Fragment {
 
@@ -41,6 +46,8 @@ public class BeatBoxFragment extends Fragment {
         FragmentBeatBoxBinding binding= DataBindingUtil.inflate(inflater,R.layout.fragment_beat_box,container,false);
         binding.recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),3));
         binding.recyclerView.setAdapter(new SoundAdapter(mBeatBox.getSounds()));
+        binding.setBeatBoxViewModel(new BeatBoxViewModel(mBeatBox));
+
         return binding.getRoot();
     }
 

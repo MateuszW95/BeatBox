@@ -1,9 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
-    <android.support.v7.widget.RecyclerView
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="beatBoxViewModel"
+            type="com.bignerdranch.android.beatbox.Models.BeatBoxViewModel"/>
+    </data>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/recycler_view">
-    </android.support.v7.widget.RecyclerView>
+        android:orientation="vertical">
 
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/recycler_view"
+            android:layout_weight="2">
+        </android.support.v7.widget.RecyclerView>
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            tools:text="procent"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:text="@{String.valueOf(beatBoxViewModel.progress)+'%'}"/>
+        <android.support.v7.widget.AppCompatSeekBar
+            android:id="@+id/speed_seek"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            app:progress="@={beatBoxViewModel.progress}"
+            />
+    </LinearLayout>
 </layout>
