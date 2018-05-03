@@ -38,6 +38,7 @@ public class BeatBoxViewModel extends BaseObservable {
     }
 
 
+
     @InverseBindingAdapter(attribute ="progress" )
     public  static int getProgressFromSeek(SeekBar seekBar){
 

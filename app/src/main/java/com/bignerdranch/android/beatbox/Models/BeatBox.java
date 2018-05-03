@@ -82,4 +82,8 @@ public class BeatBox {
         }
         mSoundPool.play(soundId,1.0f,1.0f,1,0,mPlaySpeed);
     }
+
+    public void release(){
+        mSoundPool.release();
+    }
 }
